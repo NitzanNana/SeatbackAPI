@@ -1,6 +1,15 @@
-const express = require('express')
-const app = express()
-const port = 8080
+	
+	const express = require('express')
+	const port = 8080
 
-app.get('/', (req, res) => res.send('Hello World!'))
-app.listen(port, () => console.log(`Example app listening on port ${port}!`))
+	let app = express();
+	app.server = http.createServer(app);
+
+	app.get('/', (req, res) => res.send('Hello World!'))
+
+	app.server.listen(port, err => {
+	    if(err){
+	        console.log("-->> Error 1: " + err);
+	    }
+	}); 
+
