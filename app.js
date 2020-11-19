@@ -1,7 +1,6 @@
 import http from 'http';
 import express from 'express';
 	
-const express = require('express')
 const port = 8080
 
 let app = express();
