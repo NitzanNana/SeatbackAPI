@@ -4,8 +4,6 @@ const Sequelize = require('sequelize')
 
 console.log('----------- starting! ------------')
 
-const sequelize = new Sequelize('postgres://user:pass@example.com:5432/dbname')
-
 var config = {database : 'SeatbackDb', username : 'seatbackuser', password : 'seatbackpassword'}
 
 var sequelize = new Sequelize(config.database, config.username, config.password, {
