@@ -1,6 +1,15 @@
 import http from 'http';
 import express from 'express';
-	
+
+const Sequelize = require('sequelize')	
+const sequelize = new Sequelize('postgres://user:pass@example.com:5432/dbname')
+
+sequelize.authenticate().then(() => { 
+	console.log('Connection has been established successfully.'); 
+}).catch(err => {
+	console.error('Unable to connect to the database:', err);
+});
+
 const port = 80
 
 let app = express();
