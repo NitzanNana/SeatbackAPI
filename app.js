@@ -6,15 +6,13 @@ console.log('----------- starting! ------------')
 
 var config = {database : 'seatbacksqlserver', username : 'admin', password : 'adminpassword'}
 
-var sequelize = new Sequelize(config.database, config.username, config.password, {
+
+var sequelize = new Sequelize('seatbacksqlserver', 'admin', 'adminpassword', {
     host: 'seatbacksqlserver.cbrc9wdg1jzr.eu-central-1.rds.amazonaws.com',
     port: 1433,
     logging: console.log,
     maxConcurrentQueries: 100,
-    dialect: 'mssql',
-    dialectOptions: {
-        ssl:'Amazon RDS'
-    },
+	dialect: 'mysql'|'sqlite'|'postgres'|'mssql',
     pool: { maxConnections: 5, maxIdleTime: 30},
 })
 
