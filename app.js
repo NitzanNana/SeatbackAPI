@@ -4,27 +4,31 @@ import Sequelize from 'sequelize';
 
 console.log('----------- starting! ------------')
 
-var config = {database : 'SeatbackDb', username : 'seatbackuser', password : 'seatbackpassword'}
+var config = {database : 'seatbacksqlserver', username : 'admin', password : 'adminpassword'}
 
 var sequelize = new Sequelize(config.database, config.username, config.password, {
-    host: 'seatbackdb.cluster-cbrc9wdg1jzr.eu-central-1.rds.amazonaws.com',
-    port: 5432,
+    host: 'seatbacksqlserver.cbrc9wdg1jzr.eu-central-1.rds.amazonaws.com',
+    port: 1433,
     logging: console.log,
     maxConcurrentQueries: 100,
-    dialect: 'postgres',
+    dialect: 'mssql',
     dialectOptions: {
         ssl:'Amazon RDS'
     },
     pool: { maxConnections: 5, maxIdleTime: 30},
-    language: 'en'
 })
 
-sequelize.query('SELECT * FROM some_table').success(function(result) {
-  console.log(result);
-}).error(function(err) {
-  console.log(err);
+sequelize.authenticate().then(() => { 
+	console.log('Connection has been established successfully.'); 
+}).catch(err => {
+	console.error('Unable to connect to the database:', err);
 });
 
+// sequelize.query('SELECT * FROM some_table').success(function(result) {
+//   console.log(result);
+// }).error(function(err) {
+//   console.log(err);
+// });
 
 const port = 80
 
@@ -39,3 +43,16 @@ app.server.listen(port, err => {
     }
 }); 
 
+
+
+//json
+URL : http://ec2-3-125-6-26.eu-central-1.compute.amazonaws.com/PostNewValues 
+Method : POST
+seatbackId : {seat id}
+email : {user email}
+timestamp : {sent time}
+values : {[seatback points, posture score, dynamic score, breaks score]}
+historic values : [monthly [0], monthly [1], monthly [2] .. monthly [31]]
+country : {country}
+
+  
