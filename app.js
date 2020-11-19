@@ -19,11 +19,12 @@ var sequelize = new Sequelize(config.database, config.username, config.password,
     language: 'en'
 })
 
-sequelize.authenticate().then(() => { 
-	console.log('Connection has been established successfully.'); 
-}).catch(err => {
-	console.error('Unable to connect to the database:', err);
+sequelize.query('SELECT * FROM some_table').success(function(result) {
+  console.log(result);
+}).error(function(err) {
+  console.log(err);
 });
+
 
 const port = 80
 
