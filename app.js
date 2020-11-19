@@ -46,13 +46,13 @@ app.server.listen(port, err => {
 
 
 //json
-URL : http://ec2-3-125-6-26.eu-central-1.compute.amazonaws.com/PostNewValues 
-Method : POST
-seatbackId : {seat id}
-email : {user email}
-timestamp : {sent time}
-values : {[seatback points, posture score, dynamic score, breaks score]}
-historic values : [monthly [0], monthly [1], monthly [2] .. monthly [31]]
-country : {country}
-
+// URL : http://ec2-3-125-6-26.eu-central-1.compute.amazonaws.com/PostNewValues 
+// Method : POST
+// seatbackId : {seat id}
+// email : {user email}
+// timestamp : {sent time}
+// values : {[seatback points, posture score, dynamic score, breaks score]}
+// historic values : [monthly [0], monthly [1], monthly [2] .. monthly [31]]
+// country : {country}
+//ec2-3-125-6-26.eu-central-1.compute.amazonaws.com
   
