@@ -1,6 +1,6 @@
-const express = require('express')
-const http = require('http')
-const Sequelize = require('sequelize')	
+import http from 'http';
+import express from 'express';
+import Sequelize from 'Sequelize';
 
 console.log('----------- starting! ------------')
 
