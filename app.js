@@ -1,6 +1,6 @@
 import http from 'http';
 import express from 'express';
-import Sequelize from 'Sequelize';
+import Sequelize from 'sequelize';
 
 console.log('----------- starting! ------------')
 
