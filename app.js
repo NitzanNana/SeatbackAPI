@@ -1,7 +1,7 @@
 import http from 'http';
 import express from 'express';
 	
-const port = 8080
+const port = 80
 
 let app = express();
 app.server = http.createServer(app);
