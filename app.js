@@ -7,7 +7,7 @@ console.log('----------- starting! ------------')
 var config = {database : 'seatbacksqlserver', username : 'admin', password : 'adminpassword'}
 
 
-var sequelize = new Sequelize('DeviceRecords', 'admin', 'adminpassword', {
+var sequelize = new Sequelize('', 'admin', 'adminpassword', {
     host: 'seatbacksqlserver.cbrc9wdg1jzr.eu-central-1.rds.amazonaws.com',
     port: 1433,
     logging: console.log,
