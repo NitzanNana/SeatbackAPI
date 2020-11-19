@@ -17,15 +17,17 @@ var config = {database : 'seatbacksqlserver', username : 'admin', password : 'ad
 // })
 
 const sequelize = new Sequelize('DeviceRecords', 'admin', 'adminpassword', {
-  dialect: 'postgres',
-  dialectOptions: {
-    // Observe the need for this nested `options` field for MSSQL
-    options: {
-      // Your tedious options here
-      useUTC: false,
-      dateFirst: 1
-    }
-  }
+    host: 'seatbacksqlserver.cbrc9wdg1jzr.eu-central-1.rds.amazonaws.com',
+    port: 1433,
+	dialect: 'postgres',
+	dialectOptions: {
+	// Observe the need for this nested `options` field for MSSQL
+		options: {
+		  // Your tedious options here
+		  useUTC: false,
+		  dateFirst: 1
+		}
+	}
 });
 
 sequelize.authenticate().then(() => { 
