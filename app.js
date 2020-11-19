@@ -7,14 +7,26 @@ console.log('----------- starting! ------------')
 var config = {database : 'seatbacksqlserver', username : 'admin', password : 'adminpassword'}
 
 
-var sequelize = new Sequelize('DeviceRecords', 'admin', 'adminpassword', {
-    host: 'seatbacksqlserver.cbrc9wdg1jzr.eu-central-1.rds.amazonaws.com',
-    port: 1433,
-    logging: console.log,
-    maxConcurrentQueries: 100,
-	dialect: 'mssql',
-    pool: { maxConnections: 5, maxIdleTime: 30},
-})
+// var sequelize = new Sequelize('DeviceRecords', 'admin', 'adminpassword', {
+//     host: 'seatbacksqlserver.cbrc9wdg1jzr.eu-central-1.rds.amazonaws.com',
+//     port: 1433,
+//     logging: console.log,
+//     maxConcurrentQueries: 100,
+// 	dialect: 'mssql',
+//     pool: { maxConnections: 5, maxIdleTime: 30},
+// })
+
+const sequelize = new Sequelize('DeviceRecords', 'admin', 'adminpassword', {
+  dialect: 'postgres',
+  dialectOptions: {
+    // Observe the need for this nested `options` field for MSSQL
+    options: {
+      // Your tedious options here
+      useUTC: false,
+      dateFirst: 1
+    }
+  }
+});
 
 sequelize.authenticate().then(() => { 
 	console.log('Connection has been established successfully.'); 
