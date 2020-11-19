@@ -12,7 +12,7 @@ var sequelize = new Sequelize('DeviceRecords', 'admin', 'adminpassword', {
     port: 1433,
     logging: console.log,
     maxConcurrentQueries: 100,
-	dialect: 'mysql'|'sqlite'|'postgres'|'mssql',
+	dialect: 'mysql',
     pool: { maxConnections: 5, maxIdleTime: 30},
 })
 
