@@ -70,14 +70,14 @@ app.post('/insertNew', (req, res) => {
 	    if (sqlerr) console.log(sqlerr);
 
 	    var request = new sql.Request();
-	    var sqlString = ' insert into datalogs values (' + seatbackId + ',' +
-	    											 '"' + email + '",' +
-	    											 '"' + timestamp + '",' +
-	    											 	   seatbackpoints + ',' +
-	    											 	   posture + ',' +
-	    											 	   dynamic + ',' +
-	    											 	   breaks + ',' +
-	    											 '"' + country + '",' + ')';
+	    var sqlString = " insert into DataLogs_FitSeat_Current values (" + seatbackId + "," +
+						    											 "'" + email + "'," +
+						    											 "'" + timestamp + "'," +
+						    											 	   seatbackpoints + "," +
+						    											 	   posture + "," +
+						    											 	   dynamic + "," +
+						    											 	   breaks + "," +
+						    											 "'" + country + "'" + ")";
 
 	    request.query(sqlString, function (sqlerr2, recordset) {
 	        
