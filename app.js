@@ -88,7 +88,9 @@ app.post('/insertNew', (req, res) => {
 	});
 }); 
 
-app.post('/insertNewHistory', (err, req, res) => {
+DataLogs_FitSeat_History
+app.post('/insertNewHistory', (req, res) => {
+
     var seatbackId = req.body.seatbackId;
     var email = req.body.email;
     var timestamp = req.body.timestamp;
@@ -97,13 +99,19 @@ app.post('/insertNewHistory', (err, req, res) => {
     var dynamichistory = req.body.dynamichistory;
     var breakshistory = req.body.breakshistory;
 
-    if (err) console.log(err);
-
 	sql.connect(config, function (sqlerr) {
 	    if (sqlerr) console.log(sqlerr);
 
 	    var request = new sql.Request();
-	    request.query('insert into datalogs values (' + value + ')', function (sqlerr2, recordset) {
+	    var sqlString = " insert into DataLogs_FitSeat_History values (" + seatbackId + "," +
+						    											 "'" + email + "'," +
+						    											 "'" + timestamp + "'," +
+						    											 	   seatbackhistory + "," +
+						    											 	   posturehistory + "," +
+						    											 	   dynamichistory + "," +
+						    											 	   breakshistory + ")";
+
+	    request.query(sqlString, function (sqlerr2, recordset) {
 	        
 	        if (sqlerr2) console.log(sqlerr2)
 	        res.send('Success!');
