@@ -105,10 +105,10 @@ app.post('/insertNewHistory', (req, res) => {
 	    var sqlString = " insert into DataLogs_FitSeat_History values (" + seatbackId + "," +
 						    											 "'" + email + "'," +
 						    											 "'" + timestamp + "'," +
-						    											 	   seatbackhistory + "," +
-						    											 	   posturehistory + "," +
-						    											 	   dynamichistory + "," +
-						    											 	   breakshistory + ")";
+						    											 "'" + seatbackhistory + "'," +
+						    											 "'" + posturehistory + "'," +
+						    											 "'" + dynamichistory + "'," +
+						    											 "'" + breakshistory + "')";
 
 	    request.query(sqlString, function (sqlerr2, recordset) {
 	        
