@@ -18,15 +18,12 @@ const port = 8080
 
 let app = express();
 app.server = http.createServer(app);
-
-app.use(bodyParser.urlencoded({
-  extended: true
-}));
-
-// app.use(express.json())
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
 
 app.get('/', (req, res) => {
     res.send('Device API is up and running');
+    console.log(req.body)
 });
 
 app.get('/listAll', (req, res) => {
@@ -79,6 +76,7 @@ app.post('/insertNew', (err, req, res) => {
 	        res.send('Success!');
 	    });
 	});
+
 }); 
 
 app.post('/insertNewHistory', (err, req, res) => {
