@@ -14,7 +14,7 @@ var config = {
 };
 
 
-const port = 80
+const port = 8080
 
 let app = express();
 app.server = http.createServer(app);
@@ -73,14 +73,27 @@ app.server.listen(port, err => {
 
 
 
-//json
-// URL : http://ec2-3-125-6-26.eu-central-1.compute.amazonaws.com/PostNewValues 
-// Method : POST
-// seatbackId : {seat id}
-// email : {user email}
-// timestamp : {sent time}
-// values : {[seatback points, posture score, dynamic score, breaks score]}
-// historic values : [monthly [0], monthly [1], monthly [2] .. monthly [31]]
-// country : {country}
-//ec2-3-125-6-26.eu-central-1.compute.amazonaws.com
+// //json
+// 	URL : http://18.198.125.245/insertNew 
+// 	Method : POST
+// //Body 
+// 	seatbackId : {seat id}
+// 	email : {user email}
+// 	timestamp : {sent time}
+// 	seatbackpoints : {seatback points} 
+// 	posture : {posture score} 
+// 	dynamic : {dynamic score} 
+// 	breaks : {breaks score} 
+// 	timetobreak : {time to break}
+// 	country : {country}
   
+// //json
+// 	URL : http://18.198.125.245/insertNewHistory 
+// 	Method : POST
+// //Body 
+// 	seatbackhistory : [monthly [0], monthly [1], monthly [2] .. monthly [31]] //comma seprated string
+// 	posturehistory : [monthly [0], monthly [1], monthly [2] .. monthly [31]] //comma seprated string
+// 	dynamichistory : [monthly [0], monthly [1], monthly [2] .. monthly [31]] //comma seprated string
+// 	breakshistory : [monthly [0], monthly [1], monthly [2] .. monthly [31]] //comma seprated string
+// 	timestamp : {sent time}
+
