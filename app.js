@@ -12,7 +12,7 @@ var config = {
     user: 'admin',
     password: 'adminpassword',
     server: 'seatbacksqlserver.cbrc9wdg1jzr.eu-central-1.rds.amazonaws.com',
-    database: '' 
+    database: 'DeviceRecords' 
 };
 
 // connect to your database
@@ -24,7 +24,7 @@ sql.connect(config, function (err) {
     var request = new sql.Request();
        
     // query to the database and get the records
-    request.query('select * from Student', function (err, recordset) {
+    request.query('select * from DataLogs', function (err, recordset) {
         
         if (err) console.log(err)
 
