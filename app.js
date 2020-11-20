@@ -23,6 +23,8 @@ app.use(bodyParser.urlencoded({
   extended: true
 }));
 
+app.use(express.json())
+
 app.get('/', (req, res) => {
     res.send('Device API is up and running');
 });
