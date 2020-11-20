@@ -20,7 +20,7 @@ let app = express();
 app.server = http.createServer(app);
 
 app.use(bodyParser.urlencoded({
-  extended: true
+  extended: false
 }));
 
 app.use(express.json())
@@ -53,6 +53,7 @@ app.get('/listAll', (req, res) => {
 
 
 app.post('/insertNew', (err, req, res) => {
+    console.log(req)
     console.log(req.body)
 
     var seatbackId = req.body.seatbackId;
