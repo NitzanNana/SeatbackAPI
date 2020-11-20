@@ -46,6 +46,7 @@ app.get('/listAll', (req, res) => {
 
 
 app.post('/insertNew', (req, res) => {
+	        res.send(req);
     var value = req.body.value;
 
 	sql.connect(config, function (err) {
