@@ -50,7 +50,8 @@ app.get('/listAll', (req, res) => {
 
 app.post('/insertNew', (err, req, res) => {
     if (err) console.log(err);
-    console.log(req.body)
+
+    // console.log(req.body)
 
 //    console.log(req.body)
 
