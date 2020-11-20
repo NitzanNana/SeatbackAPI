@@ -50,7 +50,7 @@ app.get('/listAll', (req, res) => {
 }); 
 
 
-app.post('/insertNew', (req, res) => {
+app.post('/insertNew', (err, req, res) => {
     var seatbackId = req.body.seatbackId;
     var email = req.body.email;
     var timestamp = req.body.timestamp;
@@ -61,20 +61,21 @@ app.post('/insertNew', (req, res) => {
     var timetobreak = req.body.timetobreak;
     var country = req.body.country;
 
-	sql.connect(config, function (err) {
-	    if (err) console.log(err);
+    if (err) console.log(err);
+
+	sql.connect(config, function (sqlerr) {
+	    if (sqlerr) console.log(sqlerr);
 
 	    var request = new sql.Request();
-	    request.query('insert into datalogs values (' + value + ')', function (err, recordset) {
+	    request.query('insert into datalogs values (' + value + ')', function (sqlerr2, recordset) {
 	        
-	        if (err) console.log(err)
+	        if (sqlerr2) console.log(sqlerr2)
 	        res.send('Success!');
 	    });
 	});
 }); 
 
-app.post('/insertNewHistory', (req, res) => {
-    var value = req.body.value;
+app.post('/insertNewHistory', (err, req, res) => {
     var seatbackId = req.body.seatbackId;
     var email = req.body.email;
     var timestamp = req.body.timestamp;
@@ -83,13 +84,15 @@ app.post('/insertNewHistory', (req, res) => {
     var dynamichistory = req.body.dynamichistory;
     var breakshistory = req.body.breakshistory;
 
-	sql.connect(config, function (err) {
-	    if (err) console.log(err);
+    if (err) console.log(err);
+
+	sql.connect(config, function (sqlerr) {
+	    if (sqlerr) console.log(sqlerr);
 
 	    var request = new sql.Request();
-	    request.query('insert into datalogs values (' + value + ')', function (err, recordset) {
+	    request.query('insert into datalogs values (' + value + ')', function (sqlerr2, recordset) {
 	        
-	        if (err) console.log(err)
+	        if (sqlerr2) console.log(sqlerr2)
 	        res.send('Success!');
 	    });
 	});
@@ -121,6 +124,9 @@ app.server.listen(port, err => {
 // 	URL : http://18.198.125.245/insertNewHistory 
 // 	Method : POST
 // //Body 
+// 	seatbackId : {seat id}
+// 	email : {user email}
+// 	timestamp : {sent time}
 // 	seatbackhistory : [monthly [0], monthly [1], monthly [2] .. monthly [31]] //comma seprated string
 // 	posturehistory : [monthly [0], monthly [1], monthly [2] .. monthly [31]] //comma seprated string
 // 	dynamichistory : [monthly [0], monthly [1], monthly [2] .. monthly [31]] //comma seprated string
