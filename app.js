@@ -88,7 +88,6 @@ app.post('/insertNew', (req, res) => {
 	});
 }); 
 
-DataLogs_FitSeat_History
 app.post('/insertNewHistory', (req, res) => {
 
     var seatbackId = req.body.seatbackId;
