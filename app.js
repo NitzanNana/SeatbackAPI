@@ -12,7 +12,7 @@ var config = {
     user: 'admin',
     password: 'adminpassword',
     server: 'seatbacksqlserver.cbrc9wdg1jzr.eu-central-1.rds.amazonaws.com',
-    database: 'seatbacksqlserver' 
+    database: '' 
 };
 
 // connect to your database
