@@ -18,7 +18,10 @@ const port = 80
 
 let app = express();
 app.server = http.createServer(app);
-app.use(bodyParser);
+
+app.use(bodyParser.urlencoded({
+  extended: true
+}));
 
 app.get('/', (req, res) => {
     res.send('Device API is up and running');
