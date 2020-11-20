@@ -21,7 +21,7 @@ app.server = http.createServer(app);
 
 app.use((error, req, res, next) => {
 	console.log(error);
-	res.status(500).send(‘Something Broke!’);
+	res.status(500).send('Something Broke');
 })
 
 app.use(bodyParser.urlencoded({ extended: true }));
