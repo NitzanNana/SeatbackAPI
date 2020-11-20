@@ -20,8 +20,6 @@ app.server = http.createServer(app);
 
 app.get('/', (req, res) => {
 
-	res.send('Hello World 1!')
-
 	// connect to your database
 	sql.connect(config, function (err) {
 
