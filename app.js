@@ -1,11 +1,8 @@
 import http from 'http';
 import express from 'express';
-import Sequelize from 'sequelize';
 import sql from 'mssql';
 
 console.log('----------- starting! ------------')
-
-//var config = {database : 'seatbacksqlserver', username : 'admin', password : 'adminpassword'}
 
  // config for your database
 var config = {
@@ -15,67 +12,36 @@ var config = {
     database: 'DeviceRecords' 
 };
 
-// connect to your database
-sql.connect(config, function (err) {
-
-    if (err) console.log(err);
-
-    // create Request object
-    var request = new sql.Request();
-       
-    // query to the database and get the records
-    request.query('select * from DataLogs', function (err, recordset) {
-        
-        if (err) console.log(err)
-
-        // send records as a response
-        res.send(recordset);
-        
-    });
-});
-
-
-// var sequelize = new Sequelize('DeviceRecords', 'admin', 'adminpassword', {
-//     host: 'seatbacksqlserver.cbrc9wdg1jzr.eu-central-1.rds.amazonaws.com',
-//     port: 1433,
-//     logging: console.log,
-//     maxConcurrentQueries: 100,
-// 	dialect: 'mssql',
-//     pool: { maxConnections: 5, maxIdleTime: 30},
-// })
-
-// const sequelize = new Sequelize('DeviceRecords', 'admin', 'adminpassword', {
-//     host: 'seatbacksqlserver.cbrc9wdg1jzr.eu-central-1.rds.amazonaws.com',
-//     port: 1433,
-// 	dialect: 'postgres',
-// 	dialectOptions: {
-// 	// Observe the need for this nested `options` field for MSSQL
-// 		options: {
-// 		  // Your tedious options here
-// 		  useUTC: false,
-// 		  dateFirst: 1
-// 		}
-// 	}
-// });
-
-// sequelize.authenticate().then(() => { 
-// 	console.log('Connection has been established successfully.'); 
-// }).catch(err => {
-// 	console.error('Unable to connect to the database:', err);
-// });
-
-// sequelize.query('SELECT * FROM some_table').success(function(result) {
-//   console.log(result);
-// }).error(function(err) {
-//   console.log(err);
-// });
 
 const port = 80
 
 let app = express();
 app.server = http.createServer(app);
 
-app.get('/', (req, res) => res.send('Hello World 1!'))
+app.get('/', (req, res) => {
+
+	res.send('Hello World 1!')
+
+	// connect to your database
+	sql.connect(config, function (err) {
+
+	    if (err) console.log(err);
+
+	    // create Request object
+	    var request = new sql.Request();
+	       
+	    // query to the database and get the records
+	    request.query('select * from DataLogs', function (err, recordset) {
+	        
+	        if (err) console.log(err)
+
+	        // send records as a response
+	        res.send(recordset);
+	        
+	    });
+	});
+}); 
+
 
 app.server.listen(port, err => {
     if(err){
