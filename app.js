@@ -1,4 +1,5 @@
 import http from 'http';
+import bodyParser from 'body-parser';
 import express from 'express';
 import sql from 'mssql';
 
@@ -17,6 +18,7 @@ const port = 80
 
 let app = express();
 app.server = http.createServer(app);
+app.use(bodyParser);
 
 app.get('/', (req, res) => {
     res.send('Device API is up and running');
@@ -46,7 +48,6 @@ app.get('/listAll', (req, res) => {
 
 
 app.post('/insertNew', (req, res) => {
-	        res.send(req);
     var value = req.body.value;
 
 	sql.connect(config, function (err) {
