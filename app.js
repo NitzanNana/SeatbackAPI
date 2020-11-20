@@ -1,10 +1,38 @@
 import http from 'http';
 import express from 'express';
 import Sequelize from 'sequelize';
+import sql from 'mssql';
 
 console.log('----------- starting! ------------')
 
-var config = {database : 'seatbacksqlserver', username : 'admin', password : 'adminpassword'}
+//var config = {database : 'seatbacksqlserver', username : 'admin', password : 'adminpassword'}
+
+ // config for your database
+var config = {
+    user: 'admin',
+    password: 'adminpassword',
+    server: 'seatbacksqlserver'
+    //database: 'SchoolDB' 
+};
+
+// connect to your database
+sql.connect(config, function (err) {
+
+    if (err) console.log(err);
+
+    // create Request object
+    var request = new sql.Request();
+       
+    // query to the database and get the records
+    request.query('select * from Student', function (err, recordset) {
+        
+        if (err) console.log(err)
+
+        // send records as a response
+        res.send(recordset);
+        
+    });
+});
 
 
 // var sequelize = new Sequelize('DeviceRecords', 'admin', 'adminpassword', {
@@ -16,25 +44,25 @@ var config = {database : 'seatbacksqlserver', username : 'admin', password : 'ad
 //     pool: { maxConnections: 5, maxIdleTime: 30},
 // })
 
-const sequelize = new Sequelize('DeviceRecords', 'admin', 'adminpassword', {
-    host: 'seatbacksqlserver.cbrc9wdg1jzr.eu-central-1.rds.amazonaws.com',
-    port: 1433,
-	dialect: 'postgres',
-	dialectOptions: {
-	// Observe the need for this nested `options` field for MSSQL
-		options: {
-		  // Your tedious options here
-		  useUTC: false,
-		  dateFirst: 1
-		}
-	}
-});
+// const sequelize = new Sequelize('DeviceRecords', 'admin', 'adminpassword', {
+//     host: 'seatbacksqlserver.cbrc9wdg1jzr.eu-central-1.rds.amazonaws.com',
+//     port: 1433,
+// 	dialect: 'postgres',
+// 	dialectOptions: {
+// 	// Observe the need for this nested `options` field for MSSQL
+// 		options: {
+// 		  // Your tedious options here
+// 		  useUTC: false,
+// 		  dateFirst: 1
+// 		}
+// 	}
+// });
 
-sequelize.authenticate().then(() => { 
-	console.log('Connection has been established successfully.'); 
-}).catch(err => {
-	console.error('Unable to connect to the database:', err);
-});
+// sequelize.authenticate().then(() => { 
+// 	console.log('Connection has been established successfully.'); 
+// }).catch(err => {
+// 	console.error('Unable to connect to the database:', err);
+// });
 
 // sequelize.query('SELECT * FROM some_table').success(function(result) {
 //   console.log(result);
