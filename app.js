@@ -51,6 +51,8 @@ app.get('/listAll', (req, res) => {
 
 
 app.post('/insertNew', (err, req, res) => {
+    console.log(req.body)
+
     var seatbackId = req.body.seatbackId;
     var email = req.body.email;
     var timestamp = req.body.timestamp;
@@ -60,8 +62,6 @@ app.post('/insertNew', (err, req, res) => {
     var breaks = req.body.breaks; 
     var timetobreak = req.body.timetobreak;
     var country = req.body.country;
-
-    console.log(req.body)
 
     if (err) console.log(err);
 
