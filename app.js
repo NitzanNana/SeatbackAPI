@@ -3,7 +3,7 @@ import bodyParser from 'body-parser';
 import express from 'express';
 import sql from 'mssql';
 
-console.log('----------- starting! ------------')
+console.log('----------- * starting * ------------')
 
  // config for your database
 var config = {
@@ -22,7 +22,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
 app.get('/', (req, res) => {
-    res.send('Device API is up and running');
+    res.send('Device API is up and running!');
 });
 
 app.get('/listAll', (req, res) => {
@@ -51,12 +51,8 @@ app.get('/listAll', (req, res) => {
 app.post('/insertNew', (err, req, res) => {
     if (err) console.log(err);
 
-    // console.log(req.body)
-
-//    console.log(req.body)
-
-    var seatbackId = req.body.seatbackId;
     var email = req.body.email;
+    var seatbackId = req.body.seatbackId;
     var timestamp = req.body.timestamp;
     var seatbackpoints = req.body.seatbackpoints; 
     var posture = req.body.posture; 
