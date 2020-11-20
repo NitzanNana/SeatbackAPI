@@ -53,9 +53,8 @@ app.get('/listAll', (req, res) => {
 
 
 app.post('/insertNew', (err, req, res) => {
+	        res.send(req);
 //    console.log(req.body)
-    console.log('req.IncomingMessage.body')
-    console.log(req.IncomingMessage.body)
 
     var seatbackId = req.body.seatbackId;
     var email = req.body.email;
