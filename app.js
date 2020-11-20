@@ -23,7 +23,7 @@ app.use(bodyParser.urlencoded({
   extended: true
 }));
 
-app.use(express.json())
+// app.use(express.json())
 
 app.get('/', (req, res) => {
     res.send('Device API is up and running');
@@ -53,7 +53,9 @@ app.get('/listAll', (req, res) => {
 
 
 app.post('/insertNew', (err, req, res) => {
-	        res.send(req);
+    if (err) console.log(err);
+
+    res.send(req);
 //    console.log(req.body)
 
     var seatbackId = req.body.seatbackId;
@@ -66,7 +68,6 @@ app.post('/insertNew', (err, req, res) => {
     var timetobreak = req.body.timetobreak;
     var country = req.body.country;
 
-    if (err) console.log(err);
 
 	sql.connect(config, function (sqlerr) {
 	    if (sqlerr) console.log(sqlerr);
