@@ -49,7 +49,10 @@ app.get('/listAll', (req, res) => {
 
 
 app.post('/insertNew', (err, req, res) => {
-    if (err) console.log(err);
+    if (err){ 
+    	console.log('error !');
+        res.send('Error!');
+    }
 
     var email = req.body.email;
     var seatbackId = req.body.seatbackId;
