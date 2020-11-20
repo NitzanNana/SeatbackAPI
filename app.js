@@ -11,8 +11,8 @@ console.log('----------- starting! ------------')
 var config = {
     user: 'admin',
     password: 'adminpassword',
-    server: 'seatbacksqlserver'
-    //database: 'SchoolDB' 
+    server: 'seatbacksqlserver.cbrc9wdg1jzr.eu-central-1.rds.amazonaws.com'
+    database: 'seatbacksqlserver' 
 };
 
 // connect to your database
