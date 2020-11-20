@@ -19,6 +19,10 @@ let app = express();
 app.server = http.createServer(app);
 
 app.get('/', (req, res) => {
+    res.send('Device API is up and running');
+});
+
+app.get('/listAll', (req, res) => {
 
 	// connect to your database
 	sql.connect(config, function (err) {
@@ -40,6 +44,21 @@ app.get('/', (req, res) => {
 	});
 }); 
 
+
+app.post('/insertNew', (req, res) => {
+    var value = req.body.value;
+
+	sql.connect(config, function (err) {
+	    if (err) console.log(err);
+
+	    var request = new sql.Request();
+	    request.query('insert into datalogs values (' + value + ')', function (err, recordset) {
+	        
+	        if (err) console.log(err)
+	        res.send('Success!');
+	    });
+	});
+}); 
 
 app.server.listen(port, err => {
     if(err){
