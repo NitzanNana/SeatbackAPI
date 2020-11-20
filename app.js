@@ -70,7 +70,14 @@ app.post('/insertNew', (req, res) => {
 	    if (sqlerr) console.log(sqlerr);
 
 	    var request = new sql.Request();
-	    request.query('insert into datalogs values (' + value + ')', function (sqlerr2, recordset) {
+	    request.query(' insert into datalogs values (' + seatbackId + ',' +
+	    											 '"' + email + '",' +
+	    											 '"' + timestamp + '",' +
+	    											 	   seatbackpoints + ',' +
+	    											 	   posture + ',' +
+	    											 	   dynamic + ',' +
+	    											 	   breaks + ',' +
+	    											 '"' + country + '",' + ')', function (sqlerr2, recordset) {
 	        
 	        if (sqlerr2) console.log(sqlerr2)
 	        res.send('Success!');
