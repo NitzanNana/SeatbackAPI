@@ -77,6 +77,7 @@ app.post('/insertNew', (req, res) => {
 						    											 	   posture + "," +
 						    											 	   dynamic + "," +
 						    											 	   breaks + "," +
+						    											 	   timetobreak + "," +
 						    											 "'" + country + "'" + ")";
 
 	    request.query(sqlString, function (sqlerr2, recordset) {
