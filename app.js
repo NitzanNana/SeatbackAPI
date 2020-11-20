@@ -51,7 +51,37 @@ app.get('/listAll', (req, res) => {
 
 
 app.post('/insertNew', (req, res) => {
+    var seatbackId = req.body.seatbackId;
+    var email = req.body.email;
+    var timestamp = req.body.timestamp;
+    var seatbackpoints = req.body.seatbackpoints; 
+    var posture = req.body.posture; 
+    var dynamic = req.body.dynamic;
+    var breaks = req.body.breaks; 
+    var timetobreak = req.body.timetobreak;
+    var country = req.body.country;
+
+	sql.connect(config, function (err) {
+	    if (err) console.log(err);
+
+	    var request = new sql.Request();
+	    request.query('insert into datalogs values (' + value + ')', function (err, recordset) {
+	        
+	        if (err) console.log(err)
+	        res.send('Success!');
+	    });
+	});
+}); 
+
+app.post('/insertNewHistory', (req, res) => {
     var value = req.body.value;
+    var seatbackId = req.body.seatbackId;
+    var email = req.body.email;
+    var timestamp = req.body.timestamp;
+    var seatbackhistory = req.body.seatbackhistory;
+    var posturehistory = req.body.posturehistory;
+    var dynamichistory = req.body.dynamichistory;
+    var breakshistory = req.body.breakshistory;
 
 	sql.connect(config, function (err) {
 	    if (err) console.log(err);
