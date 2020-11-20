@@ -61,6 +61,8 @@ app.post('/insertNew', (err, req, res) => {
     var timetobreak = req.body.timetobreak;
     var country = req.body.country;
 
+    console.log(req.body)
+
     if (err) console.log(err);
 
 	sql.connect(config, function (sqlerr) {
