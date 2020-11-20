@@ -70,17 +70,19 @@ app.post('/insertNew', (req, res) => {
 	    if (sqlerr) console.log(sqlerr);
 
 	    var request = new sql.Request();
-	    request.query(' insert into datalogs values (' + seatbackId + ',' +
+	    var sqlString = ' insert into datalogs values (' + seatbackId + ',' +
 	    											 '"' + email + '",' +
 	    											 '"' + timestamp + '",' +
 	    											 	   seatbackpoints + ',' +
 	    											 	   posture + ',' +
 	    											 	   dynamic + ',' +
 	    											 	   breaks + ',' +
-	    											 '"' + country + '",' + ')', function (sqlerr2, recordset) {
+	    											 '"' + country + '",' + ')';
+
+	    request.query(sqlString, function (sqlerr2, recordset) {
 	        
 	        if (sqlerr2) console.log(sqlerr2)
-	        res.send('Success!');
+	        res.send(sqlString);
 	    });
 	});
 
