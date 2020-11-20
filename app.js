@@ -18,6 +18,12 @@ const port = 8080
 
 let app = express();
 app.server = http.createServer(app);
+
+app.use((error, req, res, next) => {
+	console.log(error);
+	res.status(500).send(‘Something Broke!’);
+})
+
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
@@ -48,14 +54,10 @@ app.get('/listAll', (req, res) => {
 }); 
 
 
-app.post('/insertNew', (err, req, res) => {
-    if (err){ 
-    	console.log('error !');
-        res.send('Error!');
-    }
+app.post('/insertNew', (req, res) => {
 
-    var email = req.body.email;
     var seatbackId = req.body.seatbackId;
+    var email = req.body.email;
     var timestamp = req.body.timestamp;
     var seatbackpoints = req.body.seatbackpoints; 
     var posture = req.body.posture; 
@@ -63,7 +65,6 @@ app.post('/insertNew', (err, req, res) => {
     var breaks = req.body.breaks; 
     var timetobreak = req.body.timetobreak;
     var country = req.body.country;
-
 
 	sql.connect(config, function (sqlerr) {
 	    if (sqlerr) console.log(sqlerr);
