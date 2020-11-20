@@ -23,7 +23,6 @@ app.use(bodyParser.json());
 
 app.get('/', (req, res) => {
     res.send('Device API is up and running');
-    console.log(req.body)
 });
 
 app.get('/listAll', (req, res) => {
@@ -51,8 +50,8 @@ app.get('/listAll', (req, res) => {
 
 app.post('/insertNew', (err, req, res) => {
     if (err) console.log(err);
+    console.log(req.body)
 
-    res.send(req);
 //    console.log(req.body)
 
     var seatbackId = req.body.seatbackId;
