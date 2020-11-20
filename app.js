@@ -83,10 +83,9 @@ app.post('/insertNew', (req, res) => {
 	    request.query(sqlString, function (sqlerr2, recordset) {
 	        
 	        if (sqlerr2) console.log(sqlerr2)
-	        res.send(sqlString);
+	        res.send('success');
 	    });
 	});
-
 }); 
 
 app.post('/insertNewHistory', (err, req, res) => {
